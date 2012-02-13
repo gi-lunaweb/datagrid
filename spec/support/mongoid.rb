@@ -1,17 +1,6 @@
 require "rubygems"
 require 'mongoid'
 
-
-Mongoid.from_hash({
-  "host" => "localhost",
-  "database" =>"datagrid_mongoid",
-  "autocreate_indexes" => true,
-})
-
-#Mongoid.logger = TEST_LOGGER #TODO: understand why still output to STDOUT
-Mongoid.logger = nil
-
-
 class MongoidEntry
 
   include Mongoid::Document
@@ -43,3 +32,11 @@ class MongoidGrid
 
 end
 
+Mongoid.from_hash({
+  "host" => "localhost",
+  "database" =>"datagrid_mongoid",
+  "autocreate_indexes" => true,
+})
+
+# Mongoid.logger = TEST_LOGGER #TODO: understand why still output to STDOUT
+Mongoid.logger = nil

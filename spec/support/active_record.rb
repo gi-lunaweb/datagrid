@@ -4,10 +4,6 @@ ActiveRecord::Base.configurations = true
 
 ActiveRecord::Base.logger = TEST_LOGGER
 
-
-
-WillPaginate.enable
-
 ActiveRecord::Schema.verbose = false
 ActiveRecord::Schema.define(:version => 1) do
 

@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "datagrid"
+  s.name = %q{datagrid}
   s.version = "0.5.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bogdan Gusiev"]
-  s.date = "2012-01-26"
-  s.description = "This allows you to easily build datagrid aka data tables with sortable columns and filters"
-  s.email = "agresso@gmail.com"
+  s.date = %q{2012-02-13}
+  s.description = %q{This allows you to easily build datagrid aka data tables with sortable columns and filters}
+  s.email = %q{agresso@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE.txt"
   ]
@@ -36,6 +36,7 @@ Gem::Specification.new do |s|
     "lib/datagrid/drivers.rb",
     "lib/datagrid/drivers/abstract_driver.rb",
     "lib/datagrid/drivers/active_record.rb",
+    "lib/datagrid/drivers/mongo_mapper.rb",
     "lib/datagrid/drivers/mongoid.rb",
     "lib/datagrid/engine.rb",
     "lib/datagrid/filters.rb",
@@ -59,6 +60,7 @@ Gem::Specification.new do |s|
     "spec/datagrid/active_model_spec.rb",
     "spec/datagrid/columns_spec.rb",
     "spec/datagrid/drivers/active_record_spec.rb",
+    "spec/datagrid/drivers/mongo_mapper_spec.rb",
     "spec/datagrid/drivers/mongoid_spec.rb",
     "spec/datagrid/filters/boolean_enum_filter_spec.rb",
     "spec/datagrid/filters/composite_filters_spec.rb",
@@ -72,67 +74,62 @@ Gem::Specification.new do |s|
     "spec/spec_helper.rb",
     "spec/support/active_record.rb",
     "spec/support/matchers.rb",
+    "spec/support/mongo_mapper.rb",
     "spec/support/mongoid.rb",
     "spec/support/simple_report.rb",
     "spec/support/test_partials/_actions.html.erb"
   ]
-  s.homepage = "http://github.com/bogdan/datagrid"
+  s.homepage = %q{http://github.com/bogdan/datagrid}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
-  s.summary = "Ruby gem to create datagrids"
+  s.rubygems_version = %q{1.4.2}
+  s.summary = %q{Ruby gem to create datagrids}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rails>, [">= 3.0"])
-      s.add_development_dependency(%q<rake>, [">= 0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.6.0"])
-      s.add_development_dependency(%q<ruby-debug>, [">= 0"])
+      s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<mocha>, [">= 0"])
-      s.add_development_dependency(%q<rspec>, ["= 2.6.0"])
+      s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_development_dependency(%q<accept_values_for>, [">= 0"])
       s.add_development_dependency(%q<nokogiri>, [">= 0"])
       s.add_development_dependency(%q<sqlite3-ruby>, [">= 0"])
-      s.add_development_dependency(%q<will_paginate>, ["= 2.3.15"])
-      s.add_development_dependency(%q<mongoid>, ["= 2.2.2"])
-      s.add_development_dependency(%q<bson>, ["= 1.4.0"])
-      s.add_development_dependency(%q<bson_ext>, ["= 1.4.0"])
+      s.add_development_dependency(%q<will_paginate>, [">= 2.3.15"])
+      s.add_development_dependency(%q<mongoid>, [">= 0"])
+      s.add_development_dependency(%q<mongo_mapper>, [">= 0.11.0"])
+      s.add_development_dependency(%q<bson>, [">= 0"])
+      s.add_development_dependency(%q<bson_ext>, [">= 0"])
       s.add_development_dependency(%q<fastercsv>, [">= 0"])
     else
       s.add_dependency(%q<rails>, [">= 3.0"])
-      s.add_dependency(%q<rake>, [">= 0"])
-      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_dependency(%q<jeweler>, ["~> 1.6.0"])
-      s.add_dependency(%q<ruby-debug>, [">= 0"])
+      s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<mocha>, [">= 0"])
-      s.add_dependency(%q<rspec>, ["= 2.6.0"])
+      s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<accept_values_for>, [">= 0"])
       s.add_dependency(%q<nokogiri>, [">= 0"])
       s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
-      s.add_dependency(%q<will_paginate>, ["= 2.3.15"])
-      s.add_dependency(%q<mongoid>, ["= 2.2.2"])
-      s.add_dependency(%q<bson>, ["= 1.4.0"])
-      s.add_dependency(%q<bson_ext>, ["= 1.4.0"])
+      s.add_dependency(%q<will_paginate>, [">= 2.3.15"])
+      s.add_dependency(%q<mongoid>, [">= 0"])
+      s.add_dependency(%q<mongo_mapper>, [">= 0.11.0"])
+      s.add_dependency(%q<bson>, [">= 0"])
+      s.add_dependency(%q<bson_ext>, [">= 0"])
       s.add_dependency(%q<fastercsv>, [">= 0"])
     end
   else
     s.add_dependency(%q<rails>, [">= 3.0"])
-    s.add_dependency(%q<rake>, [">= 0"])
-    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-    s.add_dependency(%q<jeweler>, ["~> 1.6.0"])
-    s.add_dependency(%q<ruby-debug>, [">= 0"])
+    s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<mocha>, [">= 0"])
-    s.add_dependency(%q<rspec>, ["= 2.6.0"])
+    s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<accept_values_for>, [">= 0"])
     s.add_dependency(%q<nokogiri>, [">= 0"])
     s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
-    s.add_dependency(%q<will_paginate>, ["= 2.3.15"])
-    s.add_dependency(%q<mongoid>, ["= 2.2.2"])
-    s.add_dependency(%q<bson>, ["= 1.4.0"])
-    s.add_dependency(%q<bson_ext>, ["= 1.4.0"])
+    s.add_dependency(%q<will_paginate>, [">= 2.3.15"])
+    s.add_dependency(%q<mongoid>, [">= 0"])
+    s.add_dependency(%q<mongo_mapper>, [">= 0.11.0"])
+    s.add_dependency(%q<bson>, [">= 0"])
+    s.add_dependency(%q<bson_ext>, [">= 0"])
     s.add_dependency(%q<fastercsv>, [">= 0"])
   end
 end

@@ -1,9 +1,6 @@
 require "rubygems"
 require 'mongo_mapper'
 
-MongoMapper.connection = Mongo::Connection.new('localhost', 27017)
-MongoMapper.database = "datagrid_mongo_mapper"
-
 class MongoMapperEntry
   include MongoMapper::Document
 
@@ -34,3 +31,5 @@ class MongoMapperGrid
 
 end
 
+MongoMapper.connection = Mongo::Connection.new('localhost', 27017)
+MongoMapper.database = "datagrid_mongo_mapper"

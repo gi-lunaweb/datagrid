@@ -31,17 +31,13 @@ TEST_LOGGER = Logger.new('spec.log')
 
 RSpec.configure do |config|
 
-
   config.after(:each) do
     #TODO better database truncation
     Group.delete_all
     Entry.delete_all
     MongoidEntry.delete_all
     MongoMapperEntry.delete_all
-
   end
-
-
 end
 
 
